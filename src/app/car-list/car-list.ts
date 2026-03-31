@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Content } from '../models/content'; 
 
 @Component({
   selector: 'app-car-list',
+  imports: [CommonModule],
   templateUrl: './car-list.html',
   styleUrls: ['./car-list.css']
 })
