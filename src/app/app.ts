@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CarListComponent,CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './app.html', 
   styleUrls: ['./app.css'],
 })

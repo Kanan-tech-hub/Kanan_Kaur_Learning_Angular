@@ -1,24 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Content } from '../models/content'; 
+import { RouterModule } from '@angular/router'; // REQUIRED for [routerLink]
+import { CarService } from '../car';
+import { Content } from '../models/content';
 
 @Component({
   selector: 'app-car-list',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule], // Add RouterModule here!
   templateUrl: './car-list.html',
-  styleUrls: ['./car-list.css']
 })
-export class CarListComponent {
-  carList: Content[]; 
+export class CarListComponent implements OnInit {
+  // 1. Define the cars property
+  cars: Content[] = [];
 
-  constructor() {
-    this.carList = [
-      { id: 0, title: 'Tesla Model S', description: 'Electric luxury sedan.', creator: 'Tesla', type: 'Electric' },
-      { id: 1, title: 'Ford Mustang', description: 'Classic American muscle.', creator: 'Ford', type: 'Muscle' },
-      { id: 2, title: 'Porsche 911', description: 'Precision German sports car.', creator: 'Porsche', type: 'Sports' },
-      { id: 3, title: 'Honda Civic', description: 'Reliable daily driver.', creator: 'Honda', type: 'Sedan' },
-      { id: 4, title: 'Jeep Wrangler', description: 'Off-road legend.', creator: 'Jeep', type: 'SUV' },
-      { id: 5, title: 'Lamborghini Aventador', description: 'Italian supercar.', creator: 'Lamborghini', type: 'Exotic' }
-    ];
+  constructor(private carService: CarService) {}
+
+  ngOnInit(): void {
+    this.carService.getContent().subscribe(data => {
+      this.cars = data;
+    });
+  }
+
+  // 2. Define the onDelete method
+  onDelete(id: number): void {
+    if(confirm("Delete this vehicle?")) {
+      this.carService.deleteContent(id).subscribe(updatedList => {
+        this.cars = updatedList;
+        console.log('Vehicle removed from collection.');
+    
+      });
+    }
   }
 }

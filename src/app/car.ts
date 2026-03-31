@@ -1,31 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Content } from './models/content'; // Ensure this folder exists!
+import { Content } from './models/content';
+import { CARS } from './data/mock-content';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
-  // We'll start with an empty array or a few defaults
-  private carList: Content[] = [
-    { id: 1, title: 'Tesla Model S', creator: 'Tesla', description: 'Electric luxury sedan.', type: 'Electric' }
-  ];
+  private carList: Content[] = CARS;
 
   constructor() { }
 
-  // Assignment 4/5 requirement
+  // 1. Get all items
   getContent(): Observable<Content[]> {
     return of(this.carList);
   }
 
-  // Assignment 5/6 requirement (to find a car to edit)
+  // 2. NEW: Get a single item by ID (Fixes TS2551 error)
   getContentItem(id: number): Observable<Content | undefined> {
-    return of(this.carList.find(c => c.id === id));
+    const item = this.carList.find(c => c.id === id);
+    return of(item);
   }
 
-  // Assignment 6: Add a new car
-  addContent(newCar: Content): Observable<Content> {
+  // 3. CREATE: Add a new item
+  addContent(newCar: Content): Observable<Content[]> {
     this.carList.push(newCar);
-    return of(newCar);
+    return of(this.carList);
+  }
+
+  // 4. UPDATE: Modify an existing item (Requirement #2)
+  updateContent(updatedCar: Content): Observable<Content[]> {
+    const index = this.carList.findIndex(c => c.id === updatedCar.id);
+    if (index !== -1) {
+      this.carList[index] = updatedCar;
+    }
+    return of(this.carList);
+  }
+
+  // 5. DELETE: Remove an item (Requirement #6)
+  deleteContent(id: number): Observable<Content[]> {
+    const index = this.carList.findIndex(c => c.id === id);
+    if (index !== -1) {
+      this.carList.splice(index, 1);
+    }
+    return of(this.carList);
   }
 }

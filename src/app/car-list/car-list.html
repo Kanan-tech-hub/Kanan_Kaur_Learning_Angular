@@ -1,9 +1,8 @@
-<div class="garage-container">
-  <h2>My Dream Car Collection</h2>
+<div *ngFor="let car of cars" style="border-bottom: 1px solid #ccc; padding: 10px;">
+  <h4>{{car.title}}</h4>
+  <p>{{car.creator}}</p>
   
-  <div *ngFor="let car of carList; let i = index" class="car-item">
-    <h3>#{{ i + 1 }}: {{ car.title }}</h3>
-    <p>{{ car.description }}</p>
-    <hr>
-  </div>
+  <button (click)="onDelete(car.id)" style="color: red;">Delete</button>
+  
+  <button [routerLink]="['/modify']">Edit</button> 
 </div>
