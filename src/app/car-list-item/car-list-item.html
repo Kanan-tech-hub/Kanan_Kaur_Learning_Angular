@@ -1,1 +1,6 @@
-<p>car-list-item works!</p>
+<div class="car-card" style="border: 1px solid #ccc; margin: 10px; padding: 15px; border-radius: 8px;">
+  <h2 (click)="onImageClick()">{{ car?.title }}</h2>
+  <p><strong>Brand:</strong> {{ car?.creator }}</p>
+  <p>{{ car?.description }}</p>
+  <span style="background: #e0e0e0; padding: 3px 8px; border-radius: 4px;">{{ car?.type }}</span>
+</div>

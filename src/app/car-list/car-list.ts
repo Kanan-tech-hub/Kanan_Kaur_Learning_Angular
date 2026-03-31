@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Content } from '../models/content'; 
+import { CarListItemComponent } from '../car-list-item/car-list-item';
 
 @Component({
   selector: 'app-car-list',
   imports: [CommonModule],
   templateUrl: './car-list.html',
   styleUrls: ['./car-list.css']
+  imports: [CommonModule, CarListItemComponent],
 })
 export class CarListComponent {
   carList: Content[]; 

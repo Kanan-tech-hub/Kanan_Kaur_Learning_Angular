@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core'; // 1. Add Input here
+import { CommonModule } from '@angular/common';
+import { Content } from '../models/content';
 
 @Component({
   selector: 'app-car-list-item',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './car-list-item.html',
-  styleUrl: './car-list-item.css',
+  styleUrls: ['./car-list-item.css']
 })
-export class CarListItem {
-
+export class CarListItemComponent {
+  // 2. This allows the List to "pass" a car into this component
+  @Input() car?: Content; 
 }
