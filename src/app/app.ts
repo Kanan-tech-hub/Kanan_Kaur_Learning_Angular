@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { Content } from './models/content'; // Importing our rules
+import { Content } from './models/content';
+import { CarListComponent } from "./car-list/car-list"; // Importing our rules
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html', // This points to your HTML file
   styleUrls: ['./app.css']    // This points to your CSS file
+  ,
+  imports: [CarListComponent]
 })
 export class AppComponent {
   // We create a single car object here

@@ -1,0 +1,9 @@
+<div class="garage-container">
+  <h2>My Dream Car Collection</h2>
+  
+  <div *ngFor="let car of carList; let i = index" class="car-item">
+    <h3>#{{ i + 1 }}: {{ car.title }}</h3>
+    <p>{{ car.description }}</p>
+    <hr>
+  </div>
+</div>

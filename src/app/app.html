@@ -1,13 +1,1 @@
-<div style="border: 5px solid silver; padding: 20px; border-radius: 15px; width: 350px; font-family: sans-serif;">
-  <h1 style="color: #d32f2f;">{{ myCar.title }}</h1>
-  
-  <p><strong>Manufactured by:</strong> {{ myCar.creator }}</p>
-  <p>{{ myCar.description }}</p>
-  
-  <div style="background: #eee; padding: 5px; display: inline-block;">
-    {{ myCar.type }}
-  </div>
-
-  <br><br>
-  <img [src]="myCar.imgURL" alt="Car Image" style="width: 100%; border-radius: 10px;">
-</div>
+<app-car-list></app-car-list>
