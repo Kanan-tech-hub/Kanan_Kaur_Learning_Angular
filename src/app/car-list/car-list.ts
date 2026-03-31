@@ -1,24 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Content } from '../models/content'; 
+import { RouterModule } from '@angular/router';
+import { Content } from '../models/content';
+import { CarService } from '../car';
+import { FullDisplayNamePipe } from '../full-display-name-pipe';
+// Import the new directives
+import { HoverHighlightDirective } from '../hover-highlight';
+import { ShowDetailsDirective } from '../show-details';
 
 @Component({
   selector: 'app-car-list',
-  imports: [CommonModule],
-  templateUrl: './car-list.html',
-  styleUrls: ['./car-list.css']
+  standalone: true,
+  imports: [
+    CommonModule, 
+    RouterModule, 
+    FullDisplayNamePipe, 
+    HoverHighlightDirective, 
+    ShowDetailsDirective
+  ],
+  templateUrl: './car-list.html'
 })
-export class CarListComponent {
-  carList: Content[]; 
+export class CarListComponent implements OnInit {
+  cars: Content[] = [];
 
-  constructor() {
-    this.carList = [
-      { id: 0, title: 'Tesla Model S', description: 'Electric luxury sedan.', creator: 'Tesla', type: 'Electric' },
-      { id: 1, title: 'Ford Mustang', description: 'Classic American muscle.', creator: 'Ford', type: 'Muscle' },
-      { id: 2, title: 'Porsche 911', description: 'Precision German sports car.', creator: 'Porsche', type: 'Sports' },
-      { id: 3, title: 'Honda Civic', description: 'Reliable daily driver.', creator: 'Honda', type: 'Sedan' },
-      { id: 4, title: 'Jeep Wrangler', description: 'Off-road legend.', creator: 'Jeep', type: 'SUV' },
-      { id: 5, title: 'Lamborghini Aventador', description: 'Italian supercar.', creator: 'Lamborghini', type: 'Exotic' }
-    ];
+  constructor(private carService: CarService) {}
+
+  ngOnInit(): void {
+    this.carService.getContent().subscribe(data => this.cars = data);
+    console.log("Assignment 9: Directives and Pipes Active.");
   }
 }

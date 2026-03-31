@@ -1,9 +1,18 @@
-<div class="garage-container">
-  <h2>My Dream Car Collection</h2>
-  
-  <div *ngFor="let car of carList; let i = index" class="car-item">
-    <h3>#{{ i + 1 }}: {{ car.title }}</h3>
-    <p>{{ car.description }}</p>
-    <hr>
+<div class="container" style="padding: 20px;">
+  <h2>Tesla Inventory</h2>
+
+  <div *ngFor="let car of cars" 
+       [appHoverHighlight]="'#e3f2fd'" 
+       style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
+    
+    <h3 [appShowDetails]="car.id">
+      {{ car | fullDisplayName }}
+    </h3>
+
+    <img [src]="car.imageUrl" width="250" style="border-radius: 5px; display: block; margin: 10px 0;">
+
+    <p><strong>Price:</strong> {{ car.price | currency:'CAD' }}</p>
+    
+    <button [routerLink]="['/modify', car.id]">Edit Vehicle</button>
   </div>
 </div>
