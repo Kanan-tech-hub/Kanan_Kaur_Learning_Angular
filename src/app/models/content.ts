@@ -1,9 +1,10 @@
 export interface Content {
   id: number;
   title: string;
-  description: string;
   creator: string;
-  imgURL?: string;
-  type?: string;
-  tags?: string[];
+  type: string;
+  description?: string;
+  imageUrl?: string;   // <--- MUST HAVE THIS
+  price?: number;      // <--- Helps your CurrencyPipe
+  releaseDate?: Date;  // <--- Helps your DatePipe
 }

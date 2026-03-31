@@ -1,9 +1,30 @@
-<div class="garage-container">
-  <h2>My Dream Car Collection</h2>
-  
-  <div *ngFor="let car of carList; let i = index" class="car-item">
-    <h3>#{{ i + 1 }}: {{ car.title }}</h3>
-    <p>{{ car.description }}</p>
-    <hr>
+<div class="container" style="padding: 20px; font-family: sans-serif;">
+  <h2>Vehicle Inventory</h2>
+
+  <div *ngFor="let car of cars" style="border: 1px solid #ddd; padding: 20px; margin-bottom: 25px; border-radius: 12px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);">
+    
+    <h3 style="color: #2c3e50;">{{ car | fullDisplayName }}</h3>
+    
+    <div style="margin: 15px 0;">
+      <img [src]="car.imageUrl" 
+           [alt]="car.title" 
+           style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; border: 1px solid #eee;">
+    </div>
+
+    <div style="background: #f9f9f9; padding: 10px; border-radius: 6px;">
+      <p><strong>Category:</strong> {{ car.type | uppercase }}</p>
+      
+      <p><strong>MSRP:</strong> {{ car.price | currency:'CAD':'symbol':'1.2-2' }}</p>
+      
+      <p><strong>Inventory Date:</strong> {{ car.releaseDate | date:'longDate' }}</p>
+    </div>
+
+    <p style="margin-top: 15px; font-style: italic; color: #666;">{{ car.description }}</p>
+
+    <div style="margin-top: 15px;">
+      <button (click)="onDelete(car.id)" style="background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">Delete</button>
+      
+      <button [routerLink]="['/modify', car.id]" style="background: #3498db; color: white; border: none; padding: 8px 15px; border-radius: 4px; margin-left: 10px; cursor: pointer;">Edit Details</button>
+    </div>
   </div>
 </div>

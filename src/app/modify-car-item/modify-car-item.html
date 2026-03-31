@@ -1,1 +1,24 @@
-<p>modify-car-item works!</p>
+<form [formGroup]="carForm" (ngSubmit)="onSubmit()" style="padding: 20px;">
+  <h2>Vehicle Management</h2>
+
+  <div>
+    <label>ID:</label>
+    <input type="number" formControlName="id">
+  </div>
+
+  <div>
+    <label>Car Name:</label>
+    <input type="text" formControlName="title">
+  </div>
+
+  <div>
+    <label>Brand:</label>
+    <input type="text" formControlName="creator">
+  </div>
+
+  <button type="submit" [disabled]="carForm.invalid" style="background: green; color: white;">
+    Save to Collection
+  </button>
+  
+  <button type="button" (click)="carForm.reset()">Reset Form</button>
+</form>
