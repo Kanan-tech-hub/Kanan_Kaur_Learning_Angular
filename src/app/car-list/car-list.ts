@@ -1,34 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; // REQUIRED for [routerLink]
+import { RouterModule } from '@angular/router'; 
 import { CarService } from '../car';
 import { Content } from '../models/content';
+import { FullDisplayNamePipe } from '../full-display-name-pipe'; 
 
 @Component({
   selector: 'app-car-list',
   standalone: true,
-  imports: [CommonModule, RouterModule], // Add RouterModule here!
+  // Make sure to add your Custom Pipe to this imports array!
+  imports: [CommonModule, RouterModule, FullDisplayNamePipe], 
   templateUrl: './car-list.html',
 })
 export class CarListComponent implements OnInit {
-  // 1. Define the cars property
   cars: Content[] = [];
 
   constructor(private carService: CarService) {}
 
   ngOnInit(): void {
+    // Requirement #6: Log specific message for the custom pipe version
+    console.log("Custom Pipe Initialized- Version 2.0.");
+
     this.carService.getContent().subscribe(data => {
       this.cars = data;
     });
   }
 
-  // 2. Define the onDelete method
   onDelete(id: number): void {
-    if(confirm("Delete this vehicle?")) {
+    if(confirm("Are you sure you want to delete this vehicle?")) {
       this.carService.deleteContent(id).subscribe(updatedList => {
         this.cars = updatedList;
         console.log('Vehicle removed from collection.');
-    
       });
     }
   }
