@@ -1,1 +1,10 @@
-<app-car-list></app-car-list>
+<div class="container">
+  <div class="top-item">
+    <h1>Featured Car</h1>
+    <app-car-list-item *ngIf="featuredCar" [car]="featuredCar"></app-car-list-item>
+  </div>
+
+  <hr>
+
+  <app-car-list></app-car-list>
+</div>
