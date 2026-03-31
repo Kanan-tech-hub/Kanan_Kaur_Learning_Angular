@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import { Content } from './models/content';
-import { CarListComponent } from "./car-list/car-list"; // Importing our rules
+import { CarListComponent } from "./car-list/car-list"; 
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.html', // This points to your HTML file
-  styleUrls: ['./app.css']    // This points to your CSS file
-  ,
-  imports: [CarListComponent]
+  standalone: true,
+  imports: [CarListComponent,CommonModule, RouterModule],
+  templateUrl: './app.html', 
+  styleUrls: ['./app.css'],
 })
 export class AppComponent {
-  // We create a single car object here
+  
   myCar: Content = {
     id: 1,
     title: 'Dodge Challenger',
