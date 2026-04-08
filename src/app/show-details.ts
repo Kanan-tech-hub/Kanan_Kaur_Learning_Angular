@@ -10,7 +10,7 @@ export class ShowDetailsDirective implements OnInit {
   constructor(private el: ElementRef) {}
 
   ngOnInit() {
-    // This creates the hover tooltip
+  
     this.el.nativeElement.title = `Vehicle ID: ${this.details}`;
   }
 }

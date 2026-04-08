@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Content } from './models/content';
 
 @Pipe({
-  name: 'fullDisplayName', // This is the name you use in HTML
+  name: 'fullDisplayName', 
   standalone: true
 })
 export class FullDisplayNamePipe implements PipeTransform {

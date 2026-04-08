@@ -4,11 +4,12 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from '../car';
 import { Content } from '../models/content';
+import { HighlightOnFocusDirective } from '../highlight-on-focus';
 
 @Component({
   selector: 'app-modify-car-item',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, HighlightOnFocusDirective],
   templateUrl: './modify-car-item.html',
 })
 export class ModifyCarItem implements OnInit {
@@ -21,7 +22,7 @@ export class ModifyCarItem implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    // This creates the form object that the HTML will bind to
+    
     this.carForm = this.fb.group({
       id: ['', [Validators.required, Validators.min(1)]],
       title: ['', [Validators.required, Validators.minLength(3)]],

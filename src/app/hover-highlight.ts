@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
   standalone: true
 })
 export class HoverHighlightDirective {
-  // Input allows customization from the HTML
+  
   @Input() appHoverHighlight = 'lightgray'; 
 
   constructor(private el: ElementRef) {}

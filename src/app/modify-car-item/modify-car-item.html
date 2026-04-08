@@ -1,19 +1,31 @@
 <form [formGroup]="carForm" (ngSubmit)="onSubmit()" style="padding: 20px;">
   <h2>Vehicle Management</h2>
 
-  <div>
+  <div class="form-group">
     <label>ID:</label>
-    <input type="number" formControlName="id">
+    <input 
+      type="number" 
+      formControlName="id" 
+      appHighlightOnFocus 
+      [focusColor]="'#fff9c4'">
   </div>
 
-  <div>
+  <div class="form-group">
     <label>Car Name:</label>
-    <input type="text" formControlName="title">
+    <input 
+      type="text" 
+      formControlName="title" 
+      appHighlightOnFocus 
+      [focusColor]="'#fff9c4'">
   </div>
 
-  <div>
+  <div class="form-group">
     <label>Brand:</label>
-    <input type="text" formControlName="creator">
+    <input 
+      type="text" 
+      formControlName="creator" 
+      appHighlightOnFocus 
+      [focusColor]="'#fff9c4'">
   </div>
 
   <button type="submit" [disabled]="carForm.invalid" style="background: green; color: white;">

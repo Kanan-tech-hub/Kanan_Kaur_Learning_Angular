@@ -1,18 +1,23 @@
 <div class="container" style="padding: 20px;">
-  <h2>Tesla Inventory</h2>
+  <h2>Tesla Inventory </h2>
 
   <div *ngFor="let car of cars" 
-       [appHoverHighlight]="'#e3f2fd'" 
-       style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
+       [appHoverHighlight]="'#ffebee'" 
+       style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; cursor: pointer;">
     
-    <h3 [appShowDetails]="car.id">
+    <h3 [appShowDetails]="car.id" style="color: #181819;">
       {{ car | fullDisplayName }}
     </h3>
 
-    <img [src]="car.imageUrl" width="250" style="border-radius: 5px; display: block; margin: 10px 0;">
+    <div style="margin: 10px 0;">
+      <img [src]="car.imageUrl" [alt]="car.title" style="width: 100%; max-width: 300px; border-radius: 5px;">
+    </div>
 
+    <p><strong>Type:</strong> {{ car.type | uppercase }}</p>
     <p><strong>Price:</strong> {{ car.price | currency:'CAD' }}</p>
-    
-    <button [routerLink]="['/modify', car.id]">Edit Vehicle</button>
+
+    <button [routerLink]="['/modify', car.id]" style="margin-top: 10px; padding: 5px 15px;">
+      Edit Details
+    </button>
   </div>
 </div>

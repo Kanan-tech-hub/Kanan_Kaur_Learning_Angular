@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { Content } from '../models/content';
 import { CarService } from '../car';
 import { FullDisplayNamePipe } from '../full-display-name-pipe';
-// Import the new directives
 import { HoverHighlightDirective } from '../hover-highlight';
 import { ShowDetailsDirective } from '../show-details';
 

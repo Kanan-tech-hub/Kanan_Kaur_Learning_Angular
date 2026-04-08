@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router'; // 1. Add this import
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-page-not-found',
   standalone: true,
-  imports: [RouterLink], // 2. Add it here
+  imports: [RouterLink], 
   templateUrl: './page-not-found.html',
   styleUrl: './page-not-found.css',
 })
